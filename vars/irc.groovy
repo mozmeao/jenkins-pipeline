@@ -1,5 +1,5 @@
 def call(message) {
-  def config = readYaml file: 'jenkins.yaml'
+  def config = readYaml file: 'jenkins.yml'
   sh """
     (
       echo "NICK ${config.irc.nickname}"
