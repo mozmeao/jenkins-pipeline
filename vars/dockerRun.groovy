@@ -1,4 +1,4 @@
-def docker_command(String tag, Map args) {
+def docker_command(String image_id, Map args) {
   def output = [];
   def cmd = "docker run"
 
@@ -6,7 +6,7 @@ def docker_command(String tag, Map args) {
     cmd += " ${args.docker_args}"
   }
 
-  cmd += " ${tag}"
+  cmd += " ${image_id}"
 
   if (args.cmd) {
     if (args.bash_wrap == false) {
@@ -26,21 +26,21 @@ def docker_command(String tag, Map args) {
   return output
 }
 
-def call(String tag, String cmd) {
-  return docker_command(tag, ["cmd": cmd, "bash_wrap": true])
+def call(String image_id, String cmd) {
+  return docker_command(image_id, ["cmd": cmd, "bash_wrap": true])
 }
 
-def call(String tag, Map args) {
-  return docker_command(tag, args)
+def call(String image_id, Map args) {
+  return docker_command(image_id, args)
 }
 
-def call(String tag, Map args, Closure body) {
+def call(String image_id, Map args, Closure body) {
   if (!args.docker_args) {
     args.docker_args = ""
   }
   args.docker_args = "-d " + args.docker_args
   try {
-    containers = docker_command(tag, args)
+    containers = docker_command(image_id, args)
     body()
   }
   finally {

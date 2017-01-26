@@ -1,0 +1,13 @@
+site_name: MozMEAO Jenkins Pipeline Functions
+repo_url: https://github.com/mozmeao/jenkins-pipeline/
+docs_dir: docs
+site_author: Mozilla Marketing Engineering and Operations (MozMEAO)
+theme: readthedocs
+markdown_extensions:
+    - toc:
+        baselevel: 1
+        permalink: True
+    - def_list
+    - fenced_code
+extra_css:
+    - custom.css

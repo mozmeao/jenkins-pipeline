@@ -1,13 +1,12 @@
-def call(message) {
-  def config = readYaml file: 'jenkins.yml'
+def call(String server, String nickname, String channel, String message) {
   sh """
     (
-      echo "NICK ${config.irc.nickname}"
-      echo "USER ${config.irc.nickname} 8 * : ${config.irc.nickname}"
+      echo "NICK ${nickname}"
+      echo "USER ${nickname} 8 * : ${nickname}"
       sleep 5
-      echo "JOIN ${config.irc.channel}"
-      echo "NOTICE ${config.irc.channel} : ${message}"
+      echo "JOIN ${channel}"
+      echo "NOTICE ${channel} : ${message}"
       echo "QUIT"
-    ) | openssl s_client -connect "${config.irc.server}" > /dev/null 2>&1
+    ) | openssl s_client -connect "${server}" > /dev/null 2>&1
     """
 }
