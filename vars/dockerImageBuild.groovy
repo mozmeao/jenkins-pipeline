@@ -1,9 +1,9 @@
-def call(String tag) {
-  sh "docker build -t ${tag} ."
+def call(String image_id) {
+  sh "docker build -t ${image_id} ."
 }
 
-def call(String tag, Map args) {
-  cmd = "docker build -t ${tag}"
+def call(String image_id, Map args) {
+  cmd = "docker build -t ${image_id}"
   if (args.pull) {
     cmd += " --pull=${args.pull}"
   }
