@@ -60,3 +60,29 @@ optional {
   sh "bash -c 'false'"
 }
 ```
+
+## setConfigEnvironmentVariables
+Set environment variables specified in your `jenkins.yml` file.
+
+Add an `environment` section to your `jenkins.yml` file and those variables will be loaded into
+the build environment when you call this function, optionally passing to it the loaded config.
+It will attempt to load `jenkins.yml` if no config is passed in.
+
+#### Usage
+```groovy
+setConfigEnvironmentVariables()
+```
+
+#### Example
+```yaml
+# jenkins.yml
+environment:
+  SELENIUM_VERSION: 2.52.0
+  DUDE_STATUS: abiding
+```
+
+```groovy
+// Jenkinsfile
+config = readYaml file: 'jenkins.yml'
+setConfigEnvironmentVariables(config)
+```
