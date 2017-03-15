@@ -1,3 +1,6 @@
-def call(string app) {
-  sh "deis apps:create ${app} --no-remote"
+def call(String app, String deis_executable=null) {
+  if (!deis_executable) {
+    deis_executable = "deis"
+  }
+  sh "${deis_executable} apps:create ${app} --no-remote"
 }
