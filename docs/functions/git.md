@@ -34,3 +34,17 @@ Returns a Groovy Array.
 ```groovy
 def tags = getGitTags()
 ```
+
+## skipTheBuild
+
+Returns True if the build should be skipped because the string 
+"[ci skip]" appears in the HEAD git commit message.
+
+#### Usage
+
+```groovy
+if ( skipTheBuild() ) {
+    println "Skipping this build"
+    return
+}
+```
