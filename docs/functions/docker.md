@@ -32,6 +32,11 @@ args.no_cache
 args.dockerfile
 : Default `Dockerfile`. Define Dockerfile to use.
 
+args.cache_from
+: Use an existing image as cache.
+
+args.extra_docker_args
+: Extra docker args that will be supplied to docker command directly.
 
 
 #### Example
