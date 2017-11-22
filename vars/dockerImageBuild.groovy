@@ -13,6 +13,13 @@ def call(String image_id, Map args) {
   if (args.dockerfile) {
     cmd += " -f ${args.dockerfile}"
   }
+  if (args.cache_from) {
+    cmd += " --cache-from ${args.cache_from}"
+  }
+  if (args.extra_docker_args) {
+    cmd += " ${args.docker_args}"
+  }
+
   cmd += " ."
 
   sh cmd
