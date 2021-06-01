@@ -24,5 +24,5 @@ def call(String image_id, String registry, String credentials) {
 
 
 def call(String image_id, String credentials) {
-  push(image_id, "https://registry.hub.docker.com", credentials)
+  push(image_id, "", credentials)
 }
